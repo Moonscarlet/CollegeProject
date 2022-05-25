@@ -1,0 +1,50 @@
+<html>
+<head>
+<title> Login Page</title>
+<link href="pages/menu_assets/styles.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+.login {position: absolute;
+		top:38%;
+		left:35%;}
+</style>
+</head>
+
+<body background="pages/1.png" onload="alert('Welcome, please register first!')">
+<script type="text/javascript">
+function inc_v(){
+if(document.loginform.usern.value=="" || document.loginform.pass.value==""){
+	alert("Please enter username and password");             //check username and pw textboxes if empty
+	document.loginform.usern.focus();}
+	
+var values = location.search.substring(1).split("&");
+USER="";
+PASS="";
+for ( i=5;i< values[0].length;i++){		//get username after registration
+	USER+=values[0].charAt(i);
+	}
+for ( i=5;i< values[1].length;i++){		//get password after registration
+	PASS+=values[1].charAt(i);
+	}
+if(document.loginform.usern.value==USER && document.loginform.pass.value==PASS)
+	window.location.href = 'home.html';
+else
+	alert("Wrong login info.");
+}
+
+</script>
+
+<div class="login" >
+<table border="3" bgcolor="#000000" width="300px">
+<tr><td>
+<form name="loginform">
+<p>Username:<input type="textbox" name="usern" value="" autofocus > </br>
+Password:<input type="password" name="pass" value="" > </br></br>
+<input type="button" name="log" style="width:100px;height:30px;" value="Log in"  OnClick="inc_v();">
+<input type="button" name="reg" style="width:100px;height:30px;" value="Register" OnClick="window.location.href = 'pages/register.html'"></p>
+</form>
+</td>
+</tr>
+</table>
+<div>
+</body>
+</html>
