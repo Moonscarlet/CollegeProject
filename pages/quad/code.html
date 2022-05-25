@@ -1,0 +1,150 @@
+<html>
+<head >
+	<title>Quad Rotor </title>
+	<link href="../menu_assets/styles.css" rel="stylesheet" type="text/css">
+	
+</head>
+<body bgcolor=#6C8CD5>
+		<a href="home.html"><img src="../home/welcome.gif" height="230px" width="100%"> </a><br /> <br />
+		<div id='cssmenu'>
+		<ul>
+			<li><a href="../../home.html" ><span> Home</span></a></li>
+			<li><a href="quad.html"><span>  QuadRotor </span></a></li>
+			<li><a href="../wallpapers/wallpapers.html"> <span>Wallpapers </span></a></li>
+			<li><a href="../iq/iq.html"> <span> IQ </span></a></li>
+			<li><a href="../games/games.html"> <span>Games</span> </a></li>
+			<li><a href="../scale/scale.html">  <span>  Scale Of The Universe</span> </a></li>
+			<li><a href="../contact/contact.html"> <span>Contact Us</span></a></li>
+		</ul>
+		</div>
+		<br /><br />
+		<div>
+			<h1>This is the Arduino code we made to move the quadrotor:</h1>
+			<code>
+				#include <Servo.h>  <br /> <br />
+				 
+				#define MAX_SIGNAL 1800 <br />
+				#define MIN_SIGNAL 800 <br />
+				Servo motors[4]; <br />
+				int x=27,PIN=8; <br />
+				void setup()  <br />
+				{  <br />
+				  Serial.begin(9600); <br />
+				//  Serial.println("Program begin..."); <br />
+				//  Serial.println("This program will calibrate the ESC."); <br />
+				// <br />
+				  for (int i=0; i<4; i++){ <br />
+					motors[i].attach(PIN); <br />
+					PIN-=1; <br /> 
+				  }
+				//  Serial.println("Now writing maximum output."); <br />
+				//  Serial.println("Turn on power source, then wait 2 seconds and press any key."); <br /> <br />
+				//  
+				//  for (int i=0; i<4; i++){ <br />
+				//  motors[i].writeMicroseconds(MAX_SIGNAL); <br />}
+				//
+				//  // Wait for input <br />
+				//  while (!Serial.available()); <br />
+				//  Serial.read(); <br /> <br />
+				//
+				//  // Send min output <br />
+				//  Serial.println("Sending minimum output"); <br />
+				//  
+				//  for (int i=0; i<4; i++){ <br />
+				//  motors[i].writeMicroseconds(MIN_SIGNAL); <br />}
+				}
+				 
+				void loop()  <br />
+				{  <br />
+				  if (Serial.available() > 0){ <br />
+				  int command = Serial.read(); <br />
+				  if (command == '+'){ <br />
+					x+=1; <br />
+				  } <br />
+				  else if (command == '-'){ <br />
+					x-=1; <br />
+				  }   <br />
+				  else if (command =='1'){ <br />
+					x=32; <br />
+				  } <br />
+				  else if (command =='0'){ <br />
+					x=27; <br />
+				  }  <br />
+				  else if (command == '8') <br />
+				 { <br />
+				   Serial.println("Fly"); <br />
+				   motors[0].write(x+10); <br />
+				   motors[1].write(x+10); <br />
+				   motors[2].write(x+10); <br />
+				   motors[3].write(x+10); <br />
+				  delay (500); <br />
+				  Serial.println("Balance"); <br />
+				 } <br />
+				  else if (command == '2') <br />
+				 { <br />
+				   Serial.println("Land"); <br />
+				   motors[0].write(x-10); <br />
+				   motors[1].write(x-10); <br />
+				   motors[2].write(x-10); <br />
+				   motors[3].write(x-10); <br />
+				  delay (500); <br />
+				  Serial.println("Balance"); <br />
+				 } <br />
+				   else if (command == 'w') <br />
+				 { <br />
+				   Serial.println("Forward"); <br />
+				   motors[0].write(x+10); <br />
+				   motors[1].write(x); <br />
+				   motors[2].write(x-10); <br />
+				   motors[3].write(x); <br />
+				   delay (500); <br />
+				   Serial.println("Balance"); <br />
+				 } <br />
+ <br />
+				   else if (command == 's') <br />
+				 { <br />
+				   Serial.println("Back"); <br />
+				   motors[0].write(x-10); <br />
+				   motors[1].write(x); <br />
+				   motors[2].write(x+10); <br />
+				   motors[3].write(x); <br />
+				   delay (500); <br />
+				   Serial.println("Balance"); <br />
+				 }  <br />
+				  <br />
+					else if (command == 'd') <br />
+				 { <br />
+				   Serial.println("Right"); <br />
+				   motors[0].write(x); <br />
+				   motors[1].write(x+10); <br />
+				   motors[2].write(x); <br />
+				   motors[3].write(x-10); <br />
+				   delay (500); <br />
+				   Serial.println("Balance"); <br />
+				 } <br /> <br />
+				 
+					 else if (command == 'a') <br />
+				 { <br />
+				   Serial.println("Left"); <br />
+				   motors[0].write(x); <br />
+				   motors[1].write(x-10); <br />
+				   motors[2].write(x); <br />
+				   motors[3].write(x+10); <br />
+				   delay (500); <br />
+				 } <br />
+				} <br /> <br />
+				  
+				  for (int i=0; i<4; i++){
+					motors[i].write(x); <br />
+				  } <br />
+				  Serial.println(""); <br />    
+				  Serial.println(motors[0].read()); <br />
+				  delay(15); <br />
+				}
+			</code>
+			
+			
+		
+		</div>
+</body>
+</html>

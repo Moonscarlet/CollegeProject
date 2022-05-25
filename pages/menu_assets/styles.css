@@ -1,0 +1,93 @@
+#cssmenu ul {
+list-style-type:none;
+width:auto;
+position:relative;
+display:block;
+height:33px;
+font-size:.6em;
+background:url(images/bg.png) repeat-x top left;
+font-family:Verdana,Helvetica,Arial,sans-serif;
+border:1px solid #000;
+margin:0;
+padding:0;
+}
+
+#cssmenu li {
+display:block;
+float:left;
+margin:0;
+padding:0;
+}
+
+#cssmenu li a {
+float:left;
+color:#A79787;
+text-decoration:none;
+height:24px;
+padding:9px 15px 0;
+font-weight:normal;
+}
+
+#cssmenu li a:hover,
+#cssmenu .active {
+color:#fff;
+background:url(images/bg.png) repeat-x top left;
+text-decoration:none;
+}
+
+#cssmenu .active a {
+color:#fff;
+font-weight:700;
+}
+
+
+#cssmenu ul{
+background-color:#B11718;
+}
+#cssmenu li a:hover, #cssmenu li.active {
+background-color:#DE3330;
+}
+
+#body {		
+			position: absolute;
+			top: 300;
+			left: 300;
+		}
+		p{ padding-left: 30px;
+			color: #ffd073;
+			margin: 3px;
+			font-family: Verdana;
+			
+		}
+		.f{ padding-left: 1px;
+			color: #ffd073;
+			margin: 3px;
+		}
+		.b{text-decoration: none;
+		}
+		
+		}
+		ul.a{ list-style-type: none;
+			padding-right:20px;
+		}
+		h2 {color:#ffd073;
+			font-family: Verdana;
+		}
+		h1 {color:#ffd073;
+			font-family: Verdana;
+		}
+		a:link { color:#3515b0;
+		font-family: Verdana;
+		
+		}
+		a:visited{ color:#3515b0;
+		font-family: Verdana;
+		}
+		a:hover{ color:fc717b;
+		font-family: Verdana;
+		}
+		a:active{color:#0d8800;
+		font-family: Verdana;
+		}
+		
+		
